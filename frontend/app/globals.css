@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+/* متغیرهای رنگ اصلی بر اساس پالت مینیمال جدید */
+:root {
+  /* پس‌زمینه اصلی (کرم خنثی و بسیار ملایم - Stone/Warm Off-white) */
+  --background: 40 22% 94%; 
+  /* متن اصلی و تیترها (زغالی تیره) */
+  --foreground: 0 0% 13%;
+  
+  /* المان تعاملی اصلی - دکمه مثبت (سبز-آبی عمیق) */
+  --primary: 180 100% 18%;
+  --primary-foreground: 0 0% 100%;
+  
+  /* رنگ تاکیدی - قیمت‌ها و بخش تومانی (آجری/تراکوتا) */
+  --accent: 21 51% 49%;
+  --accent-foreground: 0 0% 100%;
+  
+  /* متون ثانویه و بخش‌های خالی (خاکستری خنثی ملایم) */
+  --muted: 40 10% 90%;
+  --muted-foreground: 24 6% 40%;
+
+  /* کارت محصول و باکس جستجو (سفید خالص برای تمایز) */
+  --product-card: 0 0% 100%; 
+  /* خط دور کارت‌ها و باکس دسته‌بندی هودی */
+  --product-card-border: 30 8% 85%; 
+
+  /* تغییر گرادیانت‌ها به رنگ‌های تخت و مینیمال جهت حذف رنگ‌های ناهمخوان */
+  --gradient-from: 40 22% 94%;
+  --gradient-to: 40 22% 94%;
+
+  /* رنگ لوگوی شاپیکا (تک‌رنگ زغالی حرفه‌ای به جای گرادیانت بنفش/صورتی) */
+  --logo-gradient-from: 0 0% 13%;
+  --logo-gradient-to: 0 0% 13%;
+}
+
+.dark {
+  /* تنظیمات تم تاریک متعادل (بدون اشباع بالا) */
+  --background: 240 6% 10%;
+  --foreground: 0 0% 98%;
+  
+  --primary: 180 60% 35%;
+  --primary-foreground: 0 0% 100%;
+  
+  --accent: 21 60% 55%;
+  --accent-foreground: 0 0% 100%;
+  
+  --muted: 240 5% 15%;
+  --muted-foreground: 240 5% 65%;
+
+  /* کارت محصول در تم تاریک */
+  --product-card: 240 5% 15%; 
+  --product-card-border: 240 5% 22%; 
+
+  --gradient-from: 240 6% 10%;
+  --gradient-to: 240 6% 10%;
+
+  --logo-gradient-from: 0 0% 98%;
+  --logo-gradient-to: 0 0% 98%;
+}
+
+/* جهت‌دهی صفحه */
+html {
+  direction: rtl;
+}
+
+/* بک‌گراند تخت و تمیز (بجای گرادیانت‌های شلوغ قدیمی) */
+body {
+  background: hsl(var(--gradient-from));
+  color: hsl(var(--foreground));
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* در صورت استفاده از این کلاس، پس‌زمینه یکدست پالت جدید اعمال می‌شود */
+.bg-gradient {
+  background: hsl(var(--gradient-from));
+}
+
+/* تبدیل لوگو به تک‌رنگ مدرن و مینیمال برای حفظ یکدستی */
+.text-logo-gradient {
+  color: hsl(var(--logo-gradient-from));
+  font-weight: 900;
+}

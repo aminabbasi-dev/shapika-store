@@ -1,0 +1,98 @@
+// src/features/categories/data/categories.ts
+import { CategoryItem } from "../components/CategoryCircle";
+
+export const mainCategories: CategoryItem[] = [
+  {
+    id: 1,
+    title: "الکترونیک",
+    iconName: "Laptop",
+    href: "/categories/electronics",
+    color: "#FFFFFF",
+    bgColor: "#2563EB",
+    count: 245,
+  },
+  {
+    id: 2,
+    title: "مد و پوشاک",
+    iconName: "Shirt",
+    href: "/categories/fashion",
+    color: "#FFFFFF",
+    bgColor: "#DB2777",
+    count: 180,
+  },
+  {
+    id: 3,
+    title: "خانه و آشپزخانه",
+    iconName: "Home",
+    href: "/categories/home",
+    color: "#FFFFFF",
+    bgColor: "#D97706",
+    count: 320,
+  },
+  {
+    id: 4,
+    title: "کتاب و نشر",
+    iconName: "Book",
+    href: "/categories/books",
+    color: "#FFFFFF",
+    bgColor: "#7C3AED",
+    count: 95,
+  },
+  {
+    id: 5,
+    title: "کافه و رستوران",
+    iconName: "Coffee",
+    href: "/categories/cafe",
+    color: "#FFFFFF",
+    bgColor: "#B45309",
+    count: 67,
+  },
+  {
+    id: 6,
+    title: "خودرو",
+    iconName: "Car",
+    href: "/categories/cars",
+    color: "#FFFFFF",
+    bgColor: "#047857",
+    count: 120,
+  },
+  {
+    id: 7,
+    title: "دوربین و عکاسی",
+    iconName: "Camera",
+    href: "/categories/camera",
+    color: "#FFFFFF",
+    bgColor: "#4F46E5",
+    count: 78,
+  },
+  {
+    id: 8,
+    title: "بازی و سرگرمی",
+    iconName: "Gamepad",
+    href: "/categories/gaming",
+    color: "#FFFFFF",
+    bgColor: "#DC2626",
+    count: 150,
+  },
+  {
+    id: 9,
+    title: "ورزش",
+    iconName: "Dumbbell",
+    href: "/categories/sports",
+    color: "#FFFFFF",
+    bgColor: "#059669",
+    count: 89,
+  },
+  {
+    id: 10,
+    title: "سفر و گردشگری",
+    iconName: "Plane",
+    href: "/categories/travel",
+    color: "#FFFFFF",
+    bgColor: "#0891B2",
+    count: 56,
+  },
+];
+
+// همه دسته‌بندی‌ها (همان ۱۰ تا)
+export const allCategories: CategoryItem[] = [...mainCategories];
