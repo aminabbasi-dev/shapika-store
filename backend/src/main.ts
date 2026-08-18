@@ -22,7 +22,7 @@ async function bootstrap() {
     SwaggerModule.setup('docs', app, document);
   }
 
-  app.use(cookieParser()); // eslint-disable-line @typescript-eslint/no-unsafe-call
+  app.use(cookieParser(process.env.COOKIE_SECRET));
 
   // تنظیم ValidationPipe به صورت سراسری
   app.useGlobalPipes(

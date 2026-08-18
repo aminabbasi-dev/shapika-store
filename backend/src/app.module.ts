@@ -17,7 +17,7 @@ import { AuthModule } from './auth/auth.module';
     }),
     ProductsModule,
     UsersModule,
-    MongooseModule.forRoot('mongodb://localhost:27017/shopDB'),
+    MongooseModule.forRoot(process.env.MONGODB_URI as string),
     CategoriesModule,
     AuthModule,
   ],
