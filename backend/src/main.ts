@@ -19,7 +19,7 @@ async function bootstrap() {
 
   if (process.env.NODE_ENV !== 'production') {
     const document = SwaggerModule.createDocument(app, config);
-    SwaggerModule.setup('doc', app, document);
+    SwaggerModule.setup('docs', app, document);
   }
 
   app.use(cookieParser()); // eslint-disable-line @typescript-eslint/no-unsafe-call
