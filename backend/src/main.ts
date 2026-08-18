@@ -17,7 +17,8 @@ async function bootstrap() {
     .addBearerAuth() // برای احراز هویت JWT
     .build();
 
-  if (process.env.NODE_ENV !== 'production') {
+  // فقط در صورتی که صریحاً غیرفعال نشده باشد
+  if (process.env.DISABLE_SWAGGER !== 'true') {
     const document = SwaggerModule.createDocument(app, config);
     SwaggerModule.setup('docs', app, document);
   }
