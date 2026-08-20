@@ -28,7 +28,7 @@ export class AuthController {
     @Body() registerDto: RegisterDto,
     @Res({ passthrough: true }) response: Response,
   ) {
-    const result = await this.authService.login(registerDto);
+    const result = await this.authService.register(registerDto);
     response.cookie('accessToken', result.accessToken, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
