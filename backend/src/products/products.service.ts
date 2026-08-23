@@ -21,6 +21,24 @@ export class ProductsService {
     @InjectModel(Category.name) private categoryModel: Model<CategoryDocument>,
   ) {}
 
+  async findAmazing() {
+    const products = await this.productModel
+      .find({
+        discount: { $gt: 0 },
+        stock: { $gt: 0 },
+      })
+      .populate({
+        path: 'categories',
+        select: 'title slug description',
+      })
+      .select('-__v')
+      .sort({ discount: -1, createdAt: -1 })
+      .lean()
+      .exec();
+
+    return products || [];
+  }
+
   async create(createProductDto: CreateProductDto) {
     await ProductHelper.matchCategories(
       createProductDto.categories,

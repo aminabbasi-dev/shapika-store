@@ -22,6 +22,11 @@ import { ApiTags, ApiBearerAuth, ApiOperation } from '@nestjs/swagger';
 export class ProductsController {
   constructor(private readonly productsService: ProductsService) {}
 
+  @Get('amazing')
+  findAmazing() {
+    return this.productsService.findAmazing();
+  }
+
   @Post()
   @ApiBearerAuth()
   @ApiOperation({ summary: 'ایجاد محصول جدید' })

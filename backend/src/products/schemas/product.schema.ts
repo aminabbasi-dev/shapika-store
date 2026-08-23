@@ -5,7 +5,7 @@ export type ProductDocument = HydratedDocument<Product>;
 
 @Schema({ timestamps: true })
 export class Product {
-  @Prop({ required: true, trim: true, unicue: true })
+  @Prop({ required: true, trim: true, unique: true })
   title!: string;
 
   @Prop({ required: true, trim: true })
