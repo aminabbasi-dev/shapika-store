@@ -99,7 +99,7 @@ export function HeroSlider({
       <div className="relative w-full h-full">
         {slides.map((slide, index) => (
           <SlideItem
-            key={slide.id}
+            key={slide._id}
             slide={slide}
             isActive={index === currentIndex}
             className={cn(

@@ -3,19 +3,15 @@ import { amazingProducts } from "@/features/amazing/data/amazings";
 import { CategoriesGrid } from "@/features/categories/components/CategoriesGrid";
 import { CategoryVerticalMenu } from "@/features/categories/components/CategoryVerticalMenu/CategoryVerticalMenu";
 import { mainCategories } from "@/features/categories/data/categories";
-import { HeroSlider } from "@/features/hero-slider/components/HeroSlider";
-import { kaboomSlides } from "@/features/hero-slider/data/slides";
+import { HeroSliderContainer } from "@/features/hero-slider/components/HeroSliderContainer";
+
 
 export default async function Home() {
   return (
     <>
       <CategoryVerticalMenu />
       {/* اسلایدر اصلی با تصاویر طبیعت */}
-      <HeroSlider
-        slides={kaboomSlides}
-        autoPlayInterval={3500}
-        className="w-full"
-      />
+      <HeroSliderContainer/>
 
       <CategoriesGrid
         categories={mainCategories}

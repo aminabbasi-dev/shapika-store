@@ -1,12 +1,12 @@
 // src/features/hero-slider/types/index.ts
 export interface Slide {
-  id: string | number;
+  _id: string;
   image: string;
   alt: string;
   title?: string;
   description?: string;
   link?: string;
-  credit?: string; // نام عکاس
+  credit?: string;
 }
 
 export interface HeroSliderProps {
