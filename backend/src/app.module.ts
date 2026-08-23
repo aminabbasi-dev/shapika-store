@@ -9,6 +9,7 @@ import { LoggerMiddleware } from './logger/logger.middleware';
 
 import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
+import { HeroSlidesModule } from './hero-slides/hero-slides.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { AuthModule } from './auth/auth.module';
     MongooseModule.forRoot(process.env.MONGODB_URI as string),
     CategoriesModule,
     AuthModule,
+    HeroSlidesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
