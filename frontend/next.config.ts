@@ -7,12 +7,20 @@ const nextConfig = {
         protocol: "https",
         hostname: "images.pexels.com",
       },
-      // ... بقیه
+      {
+        protocol: "https",
+        hostname: "ik.imagekit.io",
+        pathname: "/shapika/**",
+      },
+      {
+        protocol: "https",
+        hostname: "kaboompics.com",
+        pathname: "/download/**",
+      },
     ],
-    // غیرفعال کردن کامل بهینه‌سازی تصاویر
-    unoptimized: true,
+    // ✅ فعال کردن بهینه‌سازی با کیفیت‌های مجاز
+    qualities: [75, 85, 90],
   },
-  // اضافه کردن headers برای رفع CORS
   async headers() {
     return [
       {
