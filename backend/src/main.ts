@@ -9,7 +9,7 @@ async function bootstrap() {
 
   // ============ تنظیمات کامل CORS ============
   app.enableCors({
-    origin: 'http://localhost:3000', // ← آدرس دقیق فرانت
+    origin: process.env.FRONTEND_URL, // ← آدرس دقیق فرانت
     credentials: true, // ← برای کوکی و احراز هویت
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
     allowedHeaders: [
