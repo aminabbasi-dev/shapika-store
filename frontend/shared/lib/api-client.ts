@@ -11,4 +11,3 @@ export const apiClient = axios.create({
     "Content-Type": "application/json",
   },
 })
-console.log("api");

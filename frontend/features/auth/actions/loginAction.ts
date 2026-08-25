@@ -73,8 +73,8 @@ export async function loginAction(
 
     cookieStore.set("accessToken", accessToken, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "lax",
+      secure: process.env.NODE_ENV === "production", // ← باید true باشد
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax", // ← کلیدی!
       path: "/",
       maxAge: 15 * 60,
     });
