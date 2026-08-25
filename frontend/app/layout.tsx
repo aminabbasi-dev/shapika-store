@@ -1,7 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { Providers } from "@/providers/providers";
+import { QueryProvider } from "@/providers/query-provider";
 import { AuthProvider } from "@/features/auth/components/AuthProvider";
 import { getCurrentUser } from "@/features/auth/utils/authHelpers";
 
@@ -23,11 +23,11 @@ export default async function RootLayout({
   return (
     <html lang="fa" dir="rtl" suppressHydrationWarning>
       <body className={`${vazirmatn.className} antialiased min-h-screen`}>
-        <Providers attribute="class" defaultTheme="light">
+        <QueryProvider>
           <AuthProvider user={user}>
             <main>{children}</main>
           </AuthProvider>
-        </Providers>
+        </QueryProvider>
       </body>
     </html>
   );

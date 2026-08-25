@@ -2,8 +2,13 @@ import axios from "axios";
 
 export const apiClient = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000",
+
   timeout: 30000,
+
+  withCredentials: true,
+
   headers: {
     "Content-Type": "application/json",
   },
-});
+})
+console.log("api");

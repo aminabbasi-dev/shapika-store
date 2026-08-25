@@ -7,17 +7,29 @@ import cookieParser from 'cookie-parser';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  app.enableCors();
+  // ============ تنظیمات کامل CORS ============
+  app.enableCors({
+    origin: 'http://localhost:3000', // ← آدرس دقیق فرانت
+    credentials: true, // ← برای کوکی و احراز هویت
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+    allowedHeaders: [
+      'Content-Type',
+      'Authorization',
+      'Accept',
+      'Cookie',
+      'X-Requested-With',
+    ],
+    exposedHeaders: ['Content-Type', 'Authorization'],
+  });
 
   // تنظیم Swagger
   const config = new DocumentBuilder()
     .setTitle('فروشگاه آنلاین')
     .setDescription('مستندات API فروشگاه آنلاین ساخته شده با NestJS')
     .setVersion('1.0')
-    .addBearerAuth() // برای احراز هویت JWT
+    .addBearerAuth()
     .build();
 
-  // فقط در صورتی که صریحاً غیرفعال نشده باشد
   if (process.env.DISABLE_SWAGGER !== 'true') {
     const document = SwaggerModule.createDocument(app, config);
     SwaggerModule.setup('docs', app, document);
@@ -25,19 +37,20 @@ async function bootstrap() {
 
   app.use(cookieParser(process.env.COOKIE_SECRET));
 
-  // تنظیم ValidationPipe به صورت سراسری
   app.useGlobalPipes(
     new ValidationPipe({
-      whitelist: true, // حذف فیلدهای اضافی
-      forbidNonWhitelisted: true, // خطا در صورت وجود فیلد اضافی
-      transform: true, // تبدیل خودکار به نوع تعیین‌شده
+      whitelist: true,
+      forbidNonWhitelisted: true,
+      transform: true,
       transformOptions: {
-        enableImplicitConversion: true, // تبدیل ضمنی
+        enableImplicitConversion: true,
       },
     }),
   );
-  await app.listen(process.env.PORT as string);
+
+  await app.listen(process.env.PORT || 5000);
 }
+
 bootstrap().catch((err) => {
   console.error(err);
   process.exit(1);

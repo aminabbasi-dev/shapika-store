@@ -10,6 +10,7 @@ import { LoggerMiddleware } from './logger/logger.middleware';
 import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
 import { HeroSlidesModule } from './hero-slides/hero-slides.module';
+import { CartsModule } from './carts/carts.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { HeroSlidesModule } from './hero-slides/hero-slides.module';
     CategoriesModule,
     AuthModule,
     HeroSlidesModule,
+    CartsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
