@@ -1,11 +1,6 @@
-
 "use client";
 
-import {
-  useMutation,
-  useQuery,
-  useQueryClient,
-} from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 import {
   addCartItem,
@@ -23,8 +18,7 @@ import type {
 export const cartKeys = {
   all: ["cart"] as const,
 
-  detail: () =>
-    [...cartKeys.all, "detail"] as const,
+  detail: () => [...cartKeys.all, "detail"] as const,
 };
 
 export function useCart() {
@@ -38,15 +32,10 @@ export function useAddCartItem() {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: (
-      payload: AddCartItemPayload,
-    ) => addCartItem(payload),
+    mutationFn: (payload: AddCartItemPayload) => addCartItem(payload),
 
     onSuccess: (cart) => {
-      queryClient.setQueryData(
-        cartKeys.detail(),
-        cart,
-      );
+      queryClient.setQueryData(cartKeys.detail(), cart);
     },
   });
 }
@@ -61,14 +50,10 @@ export function useUpdateCartItem() {
     }: {
       productId: string;
       payload: UpdateCartItemPayload;
-    }) =>
-      updateCartItem(productId, payload),
+    }) => updateCartItem(productId, payload),
 
     onSuccess: (cart) => {
-      queryClient.setQueryData(
-        cartKeys.detail(),
-        cart,
-      );
+      queryClient.setQueryData(cartKeys.detail(), cart);
     },
   });
 }
@@ -77,14 +62,10 @@ export function useRemoveCartItem() {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: (productId: string) =>
-      removeCartItem(productId),
+    mutationFn: (productId: string) => removeCartItem(productId),
 
     onSuccess: (cart) => {
-      queryClient.setQueryData(
-        cartKeys.detail(),
-        cart,
-      );
+      queryClient.setQueryData(cartKeys.detail(), cart);
     },
   });
 }
@@ -96,10 +77,7 @@ export function useClearCart() {
     mutationFn: clearCart,
 
     onSuccess: (cart) => {
-      queryClient.setQueryData(
-        cartKeys.detail(),
-        cart,
-      );
+      queryClient.setQueryData(cartKeys.detail(), cart);
     },
   });
 }
