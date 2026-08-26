@@ -1,5 +1,3 @@
-import { apiClient } from "@/shared/lib/api-client";
-
 import type {
   AddCartItemPayload,
   Cart,
@@ -7,37 +5,86 @@ import type {
 } from "../types/cart.type";
 
 export async function getCart(): Promise<Cart> {
-  const { data } = await apiClient.get<Cart>("/carts");
-  console.log({ dataa: data });
-  return data;
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/carts`, {
+    method: "GET",
+    credentials: "include",
+  });
+
+  if (!response.ok) {
+    throw new Error("دریافت سبد خرید ناموفق بود");
+  }
+
+  return response.json();
 }
 
 export async function addCartItem(payload: AddCartItemPayload): Promise<Cart> {
-  const { data } = await apiClient.post<Cart>("/carts/items", payload);
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/carts/items`,
+    {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    },
+  );
 
-  return data;
+  if (!response.ok) {
+    throw new Error("افزودن محصول به سبد خرید ناموفق بود");
+  }
+
+  return response.json();
 }
 
 export async function updateCartItem(
   productId: string,
   payload: UpdateCartItemPayload,
 ): Promise<Cart> {
-  const { data } = await apiClient.patch<Cart>(
-    `/carts/items/${productId}`,
-    payload,
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/carts/items/${productId}`,
+    {
+      method: "PATCH",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    },
   );
 
-  return data;
+  if (!response.ok) {
+    throw new Error("ویرایش سبد خرید ناموفق بود");
+  }
+
+  return response.json();
 }
 
 export async function removeCartItem(productId: string): Promise<Cart> {
-  const { data } = await apiClient.delete<Cart>(`/carts/items/${productId}`);
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/carts/items/${productId}`,
+    {
+      method: "DELETE",
+      credentials: "include",
+    },
+  );
 
-  return data;
+  if (!response.ok) {
+    throw new Error("حذف محصول از سبد خرید ناموفق بود");
+  }
+
+  return response.json();
 }
 
 export async function clearCart(): Promise<Cart> {
-  const { data } = await apiClient.delete<Cart>("/carts");
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/carts`, {
+    method: "DELETE",
+    credentials: "include",
+  });
 
-  return data;
+  if (!response.ok) {
+    throw new Error("خالی کردن سبد خرید ناموفق بود");
+  }
+
+  return response.json();
 }

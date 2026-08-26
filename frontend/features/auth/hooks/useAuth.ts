@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import { useEffect, useState, useCallback } from 'react';
-import { useRouter } from 'next/navigation';
+import { useEffect, useState, useCallback } from "react";
+import { useRouter } from "next/navigation";
 
 interface User {
   id: string;
   name: string;
   email: string;
   phone_number?: string;
-  role: 'user' | 'admin';
+  role: "user" | "admin";
 }
 
 interface UseAuthReturn {
@@ -25,10 +25,13 @@ export function useAuth(): UseAuthReturn {
 
   const fetchUser = useCallback(async () => {
     try {
-      const response = await fetch('/api/auth/me', {
-        credentials: 'include',
-      });
-      
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/auth/me`,
+        {
+          credentials: "include",
+        },
+      );
+
       if (response.ok) {
         const data = await response.json();
         setUser(data.user);
@@ -36,7 +39,7 @@ export function useAuth(): UseAuthReturn {
         setUser(null);
       }
     } catch (error) {
-      console.error('Error fetching user:', error);
+      console.error("Error fetching user:", error);
       setUser(null);
     } finally {
       setLoading(false);
@@ -49,18 +52,18 @@ export function useAuth(): UseAuthReturn {
 
   const logout = useCallback(async () => {
     try {
-      const response = await fetch('/api/auth/logout', {
-        method: 'POST',
-        credentials: 'include',
+      const response = await fetch("/api/auth/logout", {
+        method: "POST",
+        credentials: "include",
       });
 
       if (response.ok) {
         setUser(null);
-        router.push('/login');
+        router.push("/login");
         router.refresh();
       }
     } catch (error) {
-      console.error('Error logging out:', error);
+      console.error("Error logging out:", error);
     }
   }, [router]);
 
